@@ -1,0 +1,111 @@
+/* ===== InterestsPage.css ===== */
+
+.interests__heading {
+  font-family: var(--font-pixel);
+  font-size: clamp(12px, 2vw, 20px);
+  color: #e0f2fe;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+
+.interests__subtext {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: rgba(224, 242, 254, 0.6);
+  margin-bottom: 52px;
+  line-height: 1.7;
+}
+
+/* ── Grid ── */
+.interests__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+/* ── Base tile ── */
+.interest-tile {
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  padding: 20px;
+  position: relative;
+}
+
+.interest-tile:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(125, 211, 252, 0.35);
+  transform: translateY(-4px);
+}
+
+.interest-tile__icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.interest-tile__label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(224, 242, 254, 0.7);
+  letter-spacing: 0.5px;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.interest-tile__placeholder {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.2);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── Secret / photography tile ── */
+.interest-tile--secret {
+  cursor: pointer;
+  border-color: rgba(251, 191, 36, 0.15);
+}
+
+.interest-tile--secret:hover {
+  background: rgba(251, 191, 36, 0.08);
+  border-color: rgba(251, 191, 36, 0.4);
+  transform: translateY(-4px);
+}
+
+.interest-tile--secret:hover .interest-tile__label {
+  color: #fbbf24;
+}
+
+.interest-tile--secret:hover .interest-tile__icon {
+  animation: camera-shake 0.4s ease;
+}
+
+@keyframes camera-shake {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-8deg); }
+  75%  { transform: rotate(8deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Arrow that appears on hover */
+.interest-tile__secret-arrow {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  font-size: 14px;
+  color: #fbbf24;
+  opacity: 0;
+  animation: arrow-fade-in 0.2s ease forwards;
+}
+
+@keyframes arrow-fade-in {
+  from { opacity: 0; transform: translateX(-4px); }
+  to   { opacity: 1; transform: translateX(0); }
+}

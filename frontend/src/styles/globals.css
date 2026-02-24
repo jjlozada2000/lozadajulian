@@ -1,0 +1,89 @@
+/* ===== CSS Variables ===== */
+:root {
+  /* Ocean palette */
+  --sky-day: #bae6fd;
+  --sky-horizon: #7dd3fc;
+  --ocean-surface: #38bdf8;
+  --ocean-shallow: #0ea5e9;
+  --ocean-mid: #0284c7;
+  --ocean-deep: #0369a1;
+  --ocean-abyss: #082f49;
+  --ocean-void: #020d18;
+
+  /* Sand & shore */
+  --sand-light: #fef3c7;
+  --sand-mid: #fde68a;
+  --sand-dark: #f59e0b;
+
+  /* Pixel accents */
+  --pixel-green: #4ade80;
+  --pixel-yellow: #fbbf24;
+  --pixel-pink: #f472b6;
+  --pixel-white: #f8fafc;
+
+  /* Typography */
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-mono: 'DM Mono', monospace;
+  --font-display: 'Bebas Neue', sans-serif;
+}
+
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--ocean-void);
+  color: var(--pixel-white);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+}
+
+/* ===== Pixel-crisp rendering ===== */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ocean-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ocean-deep);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ocean-mid);
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--ocean-surface);
+  color: var(--ocean-void);
+}
+
+/* ===== Utility ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

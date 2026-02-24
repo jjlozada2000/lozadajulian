@@ -1,0 +1,119 @@
+/* ===== ContactPage.css ===== */
+
+.contact__heading {
+  font-family: var(--font-pixel);
+  font-size: clamp(12px, 2vw, 20px);
+  color: #e0f2fe;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+
+.contact__subtext {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: rgba(224, 242, 254, 0.6);
+  margin-bottom: 52px;
+  line-height: 1.7;
+}
+
+/* ── Form layout ── */
+.contact__form {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.contact__input,
+.contact__textarea {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  resize: none;
+}
+
+.contact__input::placeholder,
+.contact__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.contact__input:focus,
+.contact__textarea:focus {
+  border-color: rgba(125, 211, 252, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact__textarea {
+  min-height: 140px;
+}
+
+/* ── Submit button ── */
+.contact__submit {
+  align-self: flex-start;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: #0c4a6e;
+  background: #7dd3fc;
+  border: none;
+  border-radius: 3px;
+  padding: 14px 28px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.contact__submit:hover {
+  background: #bae6fd;
+  transform: translateY(-2px);
+}
+
+.contact__submit:active {
+  transform: translateY(0);
+}
+
+.contact__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Status message ── */
+.contact__status {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.contact__status--success {
+  color: var(--pixel-green);
+  background: rgba(74, 222, 128, 0.08);
+  border-color: rgba(74, 222, 128, 0.25);
+}
+
+.contact__status--error {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.08);
+  border-color: rgba(248, 113, 113, 0.25);
+}
