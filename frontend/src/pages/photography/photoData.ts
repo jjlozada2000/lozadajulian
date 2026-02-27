@@ -1,30 +1,20 @@
 // ============================================================
-// 📷  PHOTO DATA  — edit this file to add / remove photos
+// PHOTO DATA — edit this to add your photos
 // ============================================================
-//
-// HOW TO ADD A PHOTO:
-// 1. Drop the image file into /public/photos/
-// 2. Copy one of the entries below and fill in your details
-// 3. Save — the gallery updates automatically
-//
-// src: path relative to /public  (e.g. "/photos/myshot.jpg")
-//      OR a full URL              (e.g. "https://...")
-// ============================================================
+// Drop images into /public/photos/ and update src paths below
 
 export interface Photo {
   id: number
   src: string
   title: string
   camera: string
-  film: string        // film stock, or "Digital" if digital
+  film: string
   location: string
-  date: string        // free text e.g. "March 2024" or "Summer '23"
+  date: string
   description: string
-  aspect?: 'portrait' | 'landscape' | 'square' // controls grid sizing
 }
 
 export const PHOTOS: Photo[] = [
-  // ── Replace these placeholders with your real shots ──────────────────────
   {
     id: 1,
     src: '/photos/placeholder-1.jpg',
@@ -34,7 +24,6 @@ export const PHOTOS: Photo[] = [
     location: 'Santa Monica, CA',
     date: 'January 2025',
     description: 'Late afternoon light bleeding across the pier.',
-    aspect: 'landscape',
   },
   {
     id: 2,
@@ -45,7 +34,6 @@ export const PHOTOS: Photo[] = [
     location: 'Los Angeles, CA',
     date: 'February 2025',
     description: 'An empty street just before the city wakes up.',
-    aspect: 'portrait',
   },
   {
     id: 3,
@@ -56,7 +44,6 @@ export const PHOTOS: Photo[] = [
     location: 'Malibu, CA',
     date: 'March 2025',
     description: 'Black and white study of the rocky shoreline.',
-    aspect: 'square',
   },
   {
     id: 4,
@@ -67,28 +54,5 @@ export const PHOTOS: Photo[] = [
     location: 'Downtown LA',
     date: 'April 2025',
     description: 'The skyline shifting from blue to amber.',
-    aspect: 'landscape',
-  },
-  {
-    id: 5,
-    src: '/photos/placeholder-5.jpg',
-    title: 'Morning Fog',
-    camera: 'Pentax K1000',
-    film: 'Kodak ColorPlus 200',
-    location: 'Pacific Coast Highway',
-    date: 'May 2025',
-    description: 'Fog rolling in off the Pacific just after sunrise.',
-    aspect: 'landscape',
-  },
-  {
-    id: 6,
-    src: '/photos/placeholder-6.jpg',
-    title: 'Corner Store',
-    camera: 'Olympus Stylus Epic',
-    film: 'Cinestill 800T',
-    location: 'Silver Lake, CA',
-    date: 'June 2025',
-    description: 'Tungsten warmth spilling out onto the sidewalk.',
-    aspect: 'portrait',
   },
 ]

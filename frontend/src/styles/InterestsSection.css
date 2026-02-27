@@ -1,0 +1,107 @@
+/* ===== InterestsSection.css ===== */
+
+.interests {
+  padding: var(--section-pad) var(--page-margin);
+  background: var(--c-bg);
+  border-top: 1px solid var(--c-border);
+}
+
+.interests__inner {
+  max-width: 900px;
+}
+
+.interests__subtitle {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--c-ink-faint);
+  letter-spacing: 1px;
+  margin-top: -36px;
+  margin-bottom: 48px;
+  font-style: italic;
+}
+
+.interests__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--c-border);
+  border: 1px solid var(--c-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* ── Item ── */
+.interest-item {
+  background: var(--c-bg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: background 0.4s var(--ease);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.interest-item:hover {
+  background: var(--c-bg-warm);
+}
+
+.interest-item__label {
+  font-family: var(--f-sans);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--c-ink);
+  line-height: 1.2;
+  transition: color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.interest-item__desc {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--c-ink-faint);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.4s var(--ease);
+}
+
+/* ── Secret (photography) tile ── */
+.interest-item--secret {
+  cursor: pointer;
+}
+
+/* The label text cross-fades using opacity layers */
+.interest-item--secret .interest-item__label {
+  position: relative;
+}
+
+/* "Photography" fades out, "View photos →" fades in */
+.interest-item--secret .interest-item__label-default,
+.interest-item--secret .interest-item__label-hover {
+  display: block;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.interest-item--secret .interest-item__label-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  color: var(--c-brown);
+  white-space: nowrap;
+}
+
+.interest-item--secret:hover .interest-item__label-default {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.interest-item--secret:hover .interest-item__label-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.interest-item--secret:hover .interest-item__desc {
+  color: var(--c-khaki);
+}

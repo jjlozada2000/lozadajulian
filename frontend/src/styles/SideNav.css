@@ -1,0 +1,58 @@
+/* ===== SideNav.css ===== */
+
+.sidenav {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.sidenav__dot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sidenav__dot-inner {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-tan);
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  flex-shrink: 0;
+}
+
+.sidenav__label {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-ink-faint);
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.sidenav__dot:hover .sidenav__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidenav__dot:hover .sidenav__dot-inner,
+.sidenav__dot--active .sidenav__dot-inner {
+  background: var(--c-brown);
+  transform: scale(1.4);
+}
+
+@media (max-width: 768px) {
+  .sidenav { display: none; }
+}
