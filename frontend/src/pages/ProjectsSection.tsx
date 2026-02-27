@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/ProjectsSection.css'
 
-// ============================================================
-// Add your projects here
-// ============================================================
 interface Project {
   id: number
   title: string
@@ -19,12 +16,21 @@ const PROJECTS: Project[] = [
   {
     id: 1,
     title: 'SEATech Research Initiative',
-    description: 'My senior Project.  A student-led interdisciplinary team developing low-cost, open-source tools for marine wildlife tracking. SEAtech Research Initiative is a student-led interdisciplinary team developing low-cost, open-source tools for marine wildlife tracking. Formed from a university course and now operating as an interdisciplinary campus research club, we unite CS, GIS, and marine biology students to build a complete sensor-to-map system for sea turtles in the San Andrés Archipelago. Our work focuses on expanding access to affordable telemetry and advancing geospatial intelligence for conservation.',
+    description: 'My senior Project. A student-led interdisciplinary team developing low-cost, open-source tools for marine wildlife tracking. SEAtech Research Initiative is a student-led interdisciplinary team developing low-cost, open-source tools for marine wildlife tracking. Formed from a university course and now operating as an interdisciplinary campus research club, we unite CS, GIS, and marine biology students to build a complete sensor-to-map system for sea turtles in the San Andrés Archipelago. Our work focuses on expanding access to affordable telemetry and advancing geospatial intelligence for conservation.',
     year: '2025-2026',
     tags: ['React', 'TypeScript', 'Flask'],
     github: 'https://github.com/cnguye-n/seatech-web',
-    live: 'https://seatech-web.vercel.app/'
+    live: 'https://seatech-web.vercel.app/',
   },
+  // Add more projects below:
+  // {
+  //   id: 2,
+  //   title: 'My Next Project',
+  //   description: '...',
+  //   year: '2025',
+  //   tags: ['Java', 'Spring Boot'],
+  //   github: 'https://github.com/...',
+  // },
 ]
 
 const PLACEHOLDER: Project[] = [
@@ -33,7 +39,6 @@ const PLACEHOLDER: Project[] = [
   { id: 3, title: 'Project Three', description: 'Add your project description here.', year: '2024', tags: ['Spring Boot', 'PostgreSQL'] },
 ]
 
-// ── Preview panel ─────────────────────────────────────────────────────────────
 function PreviewPanel({ url, label }: { url: string; label: string }) {
   const [loaded, setLoaded] = useState(false)
   const [errored, setErrored] = useState(false)
@@ -72,7 +77,6 @@ function PreviewPanel({ url, label }: { url: string; label: string }) {
   )
 }
 
-// ── Modal ─────────────────────────────────────────────────────────────────────
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [activeTab, setActiveTab] = useState<'github' | 'live'>(
     project.github ? 'github' : 'live'
@@ -96,21 +100,17 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       <div className="project-modal__panel">
         <button className="project-modal__close" onClick={onClose}>✕</button>
 
-        {/* Header */}
         <div className="project-modal__header">
-          <div className="project-modal__header-left">
-            <span className="project-modal__year">{project.year}</span>
-            <h2 className="project-modal__title">{project.title}</h2>
-            <div className="project-modal__tags">
-              {project.tags.map(t => (
-                <span key={t} className="project-modal__tag">{t}</span>
-              ))}
-            </div>
-            <p className="project-modal__description">{project.description}</p>
+          <span className="project-modal__year">{project.year}</span>
+          <h2 className="project-modal__title">{project.title}</h2>
+          <div className="project-modal__tags">
+            {project.tags.map(t => (
+              <span key={t} className="project-modal__tag">{t}</span>
+            ))}
           </div>
+          <p className="project-modal__description">{project.description}</p>
         </div>
 
-        {/* Tab switcher — only shown if both links exist */}
         {hasBoth && (
           <div className="project-modal__tabs">
             <button
@@ -128,37 +128,20 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
         )}
 
-        {/* Previews */}
         <div className="project-modal__previews">
           {!project.github && !project.live && (
             <p className="project-modal__no-links">No links added yet.</p>
           )}
-
-          {/* Single github */}
-          {project.github && !hasBoth && (
-            <PreviewPanel url={project.github} label="GitHub" />
-          )}
-
-          {/* Single live */}
-          {project.live && !hasBoth && (
-            <PreviewPanel url={project.live} label="Live site" />
-          )}
-
-          {/* Both — tab controlled */}
-          {hasBoth && activeTab === 'github' && (
-            <PreviewPanel url={project.github!} label="GitHub" />
-          )}
-          {hasBoth && activeTab === 'live' && (
-            <PreviewPanel url={project.live!} label="Live site" />
-          )}
+          {project.github && !hasBoth && <PreviewPanel url={project.github} label="GitHub" />}
+          {project.live && !hasBoth && <PreviewPanel url={project.live} label="Live site" />}
+          {hasBoth && activeTab === 'github' && <PreviewPanel url={project.github!} label="GitHub" />}
+          {hasBoth && activeTab === 'live' && <PreviewPanel url={project.live!} label="Live site" />}
         </div>
-
       </div>
     </div>
   )
 }
 
-// ── Project row ───────────────────────────────────────────────────────────────
 function ProjectRow({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) {
   return (
     <div
@@ -181,7 +164,6 @@ function ProjectRow({ project, index, onClick }: { project: Project; index: numb
   )
 }
 
-// ── Section ───────────────────────────────────────────────────────────────────
 export default function ProjectsSection() {
   const [selected, setSelected] = useState<Project | null>(null)
   const list = PROJECTS.length > 0 ? PROJECTS : PLACEHOLDER

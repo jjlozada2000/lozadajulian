@@ -8,6 +8,12 @@
 
 .contact__inner {
   max-width: 900px;
+  margin-left: auto;
+}
+
+.contact__inner .section-label,
+.contact__inner .section-heading {
+  text-align: right;
 }
 
 .contact__layout {
@@ -19,8 +25,8 @@
 
 .contact__intro p {
   font-family: var(--f-sans);
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: 400;
   color: var(--c-ink-soft);
   line-height: 1.8;
   margin-bottom: 24px;
@@ -34,16 +40,12 @@
   letter-spacing: 0.5px;
   transition: color 0.2s;
 }
+.contact__email:hover { color: var(--c-ink); }
 
-.contact__email:hover {
-  color: var(--c-ink);
-}
-
-/* ── Form ── */
 .contact__form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .contact__field {
@@ -64,7 +66,7 @@
 .contact__textarea {
   font-family: var(--f-sans);
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--c-ink);
   background: var(--c-bg);
   border: 1px solid var(--c-border);
@@ -77,18 +79,11 @@
 }
 
 .contact__input::placeholder,
-.contact__textarea::placeholder {
-  color: var(--c-ink-faint);
-}
-
+.contact__textarea::placeholder { color: var(--c-ink-faint); }
 .contact__input:focus,
-.contact__textarea:focus {
-  border-color: var(--c-khaki);
-}
+.contact__textarea:focus { border-color: var(--c-khaki); }
 
-.contact__textarea {
-  min-height: 120px;
-}
+.contact__textarea { min-height: 120px; }
 
 .contact__submit {
   align-self: flex-start;
@@ -104,29 +99,15 @@
   cursor: pointer;
   transition: background 0.2s var(--ease);
 }
+.contact__submit:hover { background: var(--c-brown); }
+.contact__submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.contact__submit:hover {
-  background: var(--c-brown);
-}
-
-.contact__submit:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.contact__status {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  letter-spacing: 0.5px;
-}
-
+.contact__status { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.5px; }
 .contact__status--success { color: #7a9e7a; }
 .contact__status--error   { color: #b87a7a; }
 
-/* ── Responsive ── */
 @media (max-width: 768px) {
-  .contact__layout {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+  .contact__layout { grid-template-columns: 1fr; gap: 40px; }
+  .contact__inner .section-label,
+  .contact__inner .section-heading { text-align: left; }
 }

@@ -8,11 +8,11 @@
   z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  align-items: flex-end;
+  gap: 20px;
 }
 
-.sidenav__dot {
+/* ── Each item ── */
+.sidenav__item {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -20,37 +20,49 @@
   cursor: pointer;
 }
 
-.sidenav__dot-inner {
+/* ── Dot ── */
+.sidenav__dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--c-tan);
-  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
   flex-shrink: 0;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
+.sidenav__item:hover .sidenav__dot,
+.sidenav__item--active .sidenav__dot {
+  background: var(--c-brown);
+  transform: scale(1.5);
+}
+
+/* ── Labels ── */
 .sidenav__label {
   font-family: var(--f-mono);
   font-size: 9px;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--c-ink-faint);
-  opacity: 0;
-  transform: translateX(6px);
-  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
-  pointer-events: none;
   white-space: nowrap;
+  transition: color 0.3s var(--ease);
 }
 
-.sidenav__dot:hover .sidenav__label {
-  opacity: 1;
-  transform: translateX(0);
+/* Left label sits to the left of the dot — right-align the text so it butts up neatly */
+.sidenav__label--left {
+  text-align: right;
+  /* push it to a consistent width so dots stay vertically aligned */
+  min-width: 72px;
 }
 
-.sidenav__dot:hover .sidenav__dot-inner,
-.sidenav__dot--active .sidenav__dot-inner {
-  background: var(--c-brown);
-  transform: scale(1.4);
+/* Right label sits to the right of the dot */
+.sidenav__label--right {
+  text-align: left;
+  min-width: 72px;
+}
+
+.sidenav__item:hover .sidenav__label,
+.sidenav__item--active .sidenav__label {
+  color: var(--c-brown);
 }
 
 @media (max-width: 768px) {

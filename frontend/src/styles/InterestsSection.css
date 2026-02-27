@@ -30,7 +30,6 @@
   overflow: hidden;
 }
 
-/* ── Item ── */
 .interest-item {
   background: var(--c-bg);
   padding: 28px 24px;
@@ -43,9 +42,7 @@
   overflow: hidden;
 }
 
-.interest-item:hover {
-  background: var(--c-bg-warm);
-}
+.interest-item:hover { background: var(--c-bg-warm); }
 
 .interest-item__label {
   font-family: var(--f-sans);
@@ -53,7 +50,9 @@
   font-weight: 600;
   color: var(--c-ink);
   line-height: 1.2;
-  transition: color 0.4s var(--ease), transform 0.4s var(--ease);
+  transition: color 0.4s var(--ease);
+  position: relative;
+  min-height: 1.4em;
 }
 
 .interest-item__desc {
@@ -65,17 +64,9 @@
   transition: color 0.4s var(--ease);
 }
 
-/* ── Secret (photography) tile ── */
-.interest-item--secret {
-  cursor: pointer;
-}
+/* ── Secret tile ── */
+.interest-item--secret { cursor: pointer; }
 
-/* The label text cross-fades using opacity layers */
-.interest-item--secret .interest-item__label {
-  position: relative;
-}
-
-/* "Photography" fades out, "View photos →" fades in */
 .interest-item--secret .interest-item__label-default,
 .interest-item--secret .interest-item__label-hover {
   display: block;
@@ -84,8 +75,7 @@
 
 .interest-item--secret .interest-item__label-hover {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   opacity: 0;
   transform: translateY(6px);
   color: var(--c-brown);
