@@ -1,0 +1,132 @@
+/* ===== ContactSection.css ===== */
+
+.contact {
+  padding: var(--section-pad) var(--page-margin);
+  background: var(--c-bg-warm);
+  border-top: 1px solid var(--c-border);
+}
+
+.contact__inner {
+  max-width: 900px;
+}
+
+.contact__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact__intro p {
+  font-family: var(--f-sans);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--c-ink-soft);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.contact__email {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  color: var(--c-brown);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.contact__email:hover {
+  color: var(--c-ink);
+}
+
+/* ── Form ── */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact__label {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--c-ink-faint);
+}
+
+.contact__input,
+.contact__textarea {
+  font-family: var(--f-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--c-ink);
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 2px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+  resize: none;
+  width: 100%;
+}
+
+.contact__input::placeholder,
+.contact__textarea::placeholder {
+  color: var(--c-ink-faint);
+}
+
+.contact__input:focus,
+.contact__textarea:focus {
+  border-color: var(--c-khaki);
+}
+
+.contact__textarea {
+  min-height: 120px;
+}
+
+.contact__submit {
+  align-self: flex-start;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-bg);
+  background: var(--c-ink);
+  border: none;
+  border-radius: 2px;
+  padding: 13px 28px;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
+}
+
+.contact__submit:hover {
+  background: var(--c-brown);
+}
+
+.contact__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contact__status {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.contact__status--success { color: #7a9e7a; }
+.contact__status--error   { color: #b87a7a; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .contact__layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

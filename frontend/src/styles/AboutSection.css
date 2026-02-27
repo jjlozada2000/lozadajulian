@@ -1,0 +1,104 @@
+/* ===== AboutSection.css ===== */
+
+.about {
+  padding: var(--section-pad) var(--page-margin);
+  background: var(--c-bg-warm);
+  border-top: 1px solid var(--c-border);
+}
+
+.about__inner {
+  max-width: 900px;
+}
+
+.about__layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 72px;
+  align-items: start;
+  margin-top: 16px;
+}
+
+/* ── Portrait ── */
+.about__portrait {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about__portrait-frame {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  background: var(--c-tan);
+}
+
+.about__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92);
+  transition: filter 0.3s;
+}
+
+.about__portrait-frame:hover .about__photo {
+  filter: saturate(1);
+}
+
+/* ── Text ── */
+.about__text {
+  padding-top: 8px;
+}
+
+.about__name {
+  font-family: var(--f-sans);
+  font-weight: 800;
+  font-size: clamp(36px, 4.5vw, 56px);
+  color: var(--c-ink);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+
+.about__name span {
+  color: var(--c-brown);
+}
+
+.about__bio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.about__bio p {
+  font-family: var(--f-sans);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--c-ink-soft);
+  line-height: 1.8;
+}
+
+.about__cta {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--c-brown);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.about__cta:hover { color: var(--c-ink); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .about__layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about__portrait-frame {
+    max-width: 220px;
+  }
+}
