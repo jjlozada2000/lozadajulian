@@ -8,14 +8,21 @@
 
 .about__inner {
   max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about__inner .section-label {
+  text-align: center;
 }
 
 .about__layout {
   display: grid;
   grid-template-columns: 260px 1fr;
-  gap: 72px;
+  gap: 64px;
   align-items: start;
   margin-top: 16px;
+  text-align: left;
 }
 
 /* ── Portrait ── */
@@ -55,11 +62,11 @@
 .about__name {
   font-family: var(--f-sans);
   font-weight: 800;
-  font-size: clamp(36px, 4.5vw, 56px);
+  font-size: clamp(32px, 4vw, 52px);
   color: var(--c-ink);
   line-height: 1;
   letter-spacing: -2px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .about__name span {
@@ -69,8 +76,8 @@
 .about__bio {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 36px;
+  gap: 14px;
+  margin-bottom: 32px;
 }
 
 .about__bio p {
@@ -83,22 +90,18 @@
 
 .about__cta {
   font-family: var(--f-mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--c-brown);
   text-decoration: none;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   transition: color 0.2s;
 }
 
 .about__cta:hover { color: var(--c-ink); }
 
-/* ── Responsive ── */
 @media (max-width: 768px) {
-  .about__layout {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .about__portrait-frame {
-    max-width: 220px;
-  }
+  .about__layout { grid-template-columns: 1fr; gap: 36px; }
+  .about__portrait-frame { max-width: 200px; }
+  .about__inner { text-align: left; }
 }

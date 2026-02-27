@@ -8,6 +8,12 @@
 
 .projects__inner {
   max-width: 900px;
+  margin-left: auto;
+}
+
+.projects__inner .section-label,
+.projects__inner .section-heading {
+  text-align: right;
 }
 
 /* ── List ── */
@@ -17,7 +23,6 @@
   border-top: 1px solid var(--c-border);
 }
 
-/* ── Row ── */
 .project-row {
   display: grid;
   grid-template-columns: 40px 1fr auto 60px 24px;
@@ -51,7 +56,7 @@
 
 .project-row__title {
   font-family: var(--f-sans);
-  font-size: clamp(20px, 2.5vw, 28px);
+  font-size: clamp(18px, 2.2vw, 26px);
   font-weight: 600;
   color: var(--c-ink);
   position: relative;
@@ -140,22 +145,15 @@
 
 .project-modal__close {
   position: absolute;
-  top: 18px;
-  right: 20px;
-  background: none;
-  border: none;
+  top: 18px; right: 20px;
+  background: none; border: none;
   font-size: 16px;
   color: var(--c-ink-faint);
   cursor: pointer;
   transition: color 0.15s, transform 0.2s;
 }
+.project-modal__close:hover { color: var(--c-ink); transform: rotate(90deg); }
 
-.project-modal__close:hover {
-  color: var(--c-ink);
-  transform: rotate(90deg);
-}
-
-/* Header */
 .project-modal__year {
   font-family: var(--f-mono);
   font-size: 10px;
@@ -168,7 +166,7 @@
 
 .project-modal__title {
   font-family: var(--f-sans);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--c-ink);
   margin-bottom: 14px;
@@ -201,10 +199,8 @@
   line-height: 1.75;
 }
 
-/* ── Tabs ── */
 .project-modal__tabs {
   display: flex;
-  gap: 0;
   border: 1px solid var(--c-border);
   border-radius: 3px;
   overflow: hidden;
@@ -223,17 +219,9 @@
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
+.project-modal__tab:first-child { border-right: 1px solid var(--c-border); }
+.project-modal__tab--active { background: var(--c-ink); color: var(--c-bg); }
 
-.project-modal__tab:first-child {
-  border-right: 1px solid var(--c-border);
-}
-
-.project-modal__tab--active {
-  background: var(--c-ink);
-  color: var(--c-bg);
-}
-
-/* ── Preview ── */
 .project-preview {
   border: 1px solid var(--c-border);
   border-radius: 3px;
@@ -265,7 +253,6 @@
   letter-spacing: 1px;
   transition: color 0.2s;
 }
-
 .project-preview__open:hover { color: var(--c-ink); }
 
 .project-preview__frame-wrap {
@@ -307,7 +294,6 @@
   text-decoration: none;
   transition: color 0.2s;
 }
-
 .project-preview__fallback:hover { color: var(--c-ink); }
 
 .project-modal__no-links {
@@ -319,7 +305,6 @@
   letter-spacing: 1px;
 }
 
-/* ── Responsive ── */
 @media (max-width: 640px) {
   .project-row { grid-template-columns: 32px 1fr 24px; }
   .project-row__tags, .project-row__year { display: none; }

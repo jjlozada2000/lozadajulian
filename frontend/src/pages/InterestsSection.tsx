@@ -2,9 +2,6 @@ import React from 'react'
 import { navigate } from '../App'
 import '../styles/InterestsSection.css'
 
-// ============================================================
-// Edit your interests here
-// ============================================================
 interface Interest {
   label: string
   description?: string
