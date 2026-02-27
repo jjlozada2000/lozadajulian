@@ -1,5 +1,4 @@
 import React from 'react'
-import { SITE } from '../config/siteConfig'
 import '../styles/AboutSection.css'
 
 const BIO_LINES = [
@@ -11,6 +10,11 @@ const BIO_LINES = [
 const PHOTO_PATH = '/about.jpeg'
 
 export default function AboutSection() {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault()
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <section id="about" className="about">
       <div className="about__inner">
@@ -35,7 +39,9 @@ export default function AboutSection() {
                 <p key={i}>{line}</p>
               ))}
             </div>
-            <a href={`mailto:${SITE.email}`} className="about__cta">Get in touch →</a>
+            <a href="#contact" onClick={scrollToContact} className="about__cta">
+              Get in touch →
+            </a>
           </div>
         </div>
 

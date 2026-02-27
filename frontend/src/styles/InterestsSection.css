@@ -20,6 +20,7 @@
   font-style: italic;
 }
 
+/* ── Grid — NO overflow:hidden so panels can slide on top of neighbors ── */
 .interests__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -27,30 +28,91 @@
   background: var(--c-border);
   border: 1px solid var(--c-border);
   border-radius: 2px;
-  overflow: hidden;
+  /* overflow visible so sliding panel layers on top */
+  overflow: visible;
+  position: relative;
 }
 
+/* ── Each tile ── */
 .interest-item {
+  position: relative;
+  /* NO overflow:hidden — panel slides out over neighbors */
+  cursor: default;
+  min-height: 110px;
+  background: var(--c-bg);
+}
+
+.interest-item--secret { cursor: pointer; }
+
+/* Hovered tile sits on top of everything */
+.interest-item--hovered {
+  z-index: 10;
+}
+
+/* ── Photo fills the tile behind the panel ── */
+.interest-item__photo-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.interest-item__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.88);
+  transition: filter 0.4s var(--ease);
+}
+
+.interest-item--hovered .interest-item__photo {
+  filter: saturate(1);
+}
+
+.interest-item__photo-fallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--c-bg-warm), var(--c-tan));
+}
+
+/* ── Text panel ──
+   Starts covering its own tile (left:0, width:100%).
+   On hover slides right by 100% of the tile width,
+   now sitting ON TOP of the tile to the right.
+   overflow:visible on parent lets it show above neighbors.
+── */
+.interest-item__text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
   background: var(--c-bg);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 6px;
-  transition: background 0.4s var(--ease);
-  cursor: default;
-  position: relative;
-  overflow: hidden;
+  transform: translateX(0%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* border to show it's a panel sliding over */
+  box-shadow: none;
 }
 
-.interest-item:hover { background: var(--c-bg-warm); }
+.interest-item--hovered .interest-item__text {
+  /* slides right by full tile width, sits on top of next tile */
+  transform: translateX(500%);
+  box-shadow: 2px 0 12px rgba(46, 40, 32, 0.08);
+}
 
+/* ── Label ── */
 .interest-item__label {
   font-family: var(--f-sans);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--c-ink);
   line-height: 1.2;
-  transition: color 0.4s var(--ease);
   position: relative;
   min-height: 1.4em;
 }
@@ -61,16 +123,18 @@
   color: var(--c-ink-faint);
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  transition: color 0.4s var(--ease);
+  transition: color 0.3s var(--ease);
 }
 
-/* ── Secret tile ── */
-.interest-item--secret { cursor: pointer; }
+.interest-item--hovered .interest-item__desc {
+  color: var(--c-khaki);
+}
 
+/* ── Secret label cross-fade ── */
 .interest-item--secret .interest-item__label-default,
 .interest-item--secret .interest-item__label-hover {
   display: block;
-  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
 }
 
 .interest-item--secret .interest-item__label-hover {
@@ -82,16 +146,12 @@
   white-space: nowrap;
 }
 
-.interest-item--secret:hover .interest-item__label-default {
+.interest-item--secret.interest-item--hovered .interest-item__label-default {
   opacity: 0;
   transform: translateY(-6px);
 }
 
-.interest-item--secret:hover .interest-item__label-hover {
+.interest-item--secret.interest-item--hovered .interest-item__label-hover {
   opacity: 1;
   transform: translateY(0);
-}
-
-.interest-item--secret:hover .interest-item__desc {
-  color: var(--c-khaki);
 }

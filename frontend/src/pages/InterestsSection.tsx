@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { navigate } from '../App'
 import '../styles/InterestsSection.css'
 
@@ -7,6 +7,8 @@ interface Interest {
   description?: string
   isSecret?: boolean
   onClick?: () => void
+  // Filenames from /public/photos/ to randomly reveal on hover
+  photos?: string[]
 }
 
 const INTERESTS: Interest[] = [
@@ -15,39 +17,71 @@ const INTERESTS: Interest[] = [
     description: 'Film & digital',
     isSecret: true,
     onClick: () => navigate('/photography'),
+    photos: [
+      // Add your photo filenames here, e.g:
+      // '/photos/shot-01.jpg',
+      // '/photos/shot-02.jpg',
+    ],
   },
   // Uncomment and fill in yours:
-  // { label: 'Coffee',        description: 'Always brewing' },
-  // { label: 'Ocean',         description: 'Salt & surf' },
-  // { label: 'Gaming',        description: 'Competitive & casual' },
-  // { label: 'Music',         description: 'All genres' },
-  // { label: 'Reading',       description: 'Non-fiction mostly' },
-  // { label: 'Fitness',       description: 'Gym & outdoor' },
-  // { label: 'Travel',        description: 'Always planning' },
+  // { label: 'Coffee',   description: 'Always brewing', photos: ['/photos/coffee-01.jpg'] },
+  // { label: 'Ocean',    description: 'Salt & surf',    photos: ['/photos/ocean-01.jpg'] },
+  // { label: 'Gaming',   description: 'Competitive & casual', photos: [] },
 ]
 
+function pickRandom<T>(arr: T[]): T | null {
+  if (!arr || arr.length === 0) return null
+  return arr[Math.floor(Math.random() * arr.length)]
+}
+
 function InterestItem({ item }: { item: Interest }) {
+  const [hovered, setHovered] = useState(false)
+  const [photo, setPhoto] = useState<string | null>(null)
+
+  const handleEnter = () => {
+    setPhoto(pickRandom(item.photos ?? []))
+    setHovered(true)
+  }
+
+  const handleLeave = () => {
+    setHovered(false)
+  }
+
   return (
     <div
-      className={`interest-item ${item.isSecret ? 'interest-item--secret' : ''}`}
+      className={`interest-item ${item.isSecret ? 'interest-item--secret' : ''} ${hovered ? 'interest-item--hovered' : ''}`}
       onClick={item.onClick}
       role={item.onClick ? 'link' : undefined}
       tabIndex={item.onClick ? 0 : undefined}
       onKeyDown={(e) => e.key === 'Enter' && item.onClick?.()}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
-      <span className="interest-item__label">
-        {item.isSecret ? (
-          <>
-            <span className="interest-item__label-default">{item.label}</span>
-            <span className="interest-item__label-hover">View photos →</span>
-          </>
+      {/* Photo layer — always behind, full tile */}
+      <div className="interest-item__photo-wrap">
+        {photo ? (
+          <img src={photo} alt="" className="interest-item__photo" draggable={false} />
         ) : (
-          item.label
+          <div className="interest-item__photo-fallback" />
         )}
-      </span>
-      {item.description && (
-        <span className="interest-item__desc">{item.description}</span>
-      )}
+      </div>
+
+      {/* Text panel — slides right to uncover the photo */}
+      <div className="interest-item__text">
+        <span className="interest-item__label">
+          {item.isSecret ? (
+            <>
+              <span className="interest-item__label-default">{item.label}</span>
+              <span className="interest-item__label-hover">View photos →</span>
+            </>
+          ) : (
+            item.label
+          )}
+        </span>
+        {item.description && (
+          <span className="interest-item__desc">{item.description}</span>
+        )}
+      </div>
     </div>
   )
 }
@@ -67,9 +101,11 @@ export default function InterestsSection() {
             ? INTERESTS.map((item) => (
                 <InterestItem key={item.label} item={item} />
               ))
-            : <p style={{ fontFamily: 'var(--f-mono)', fontSize: 12, color: 'var(--c-ink-faint)' }}>
+            : (
+              <p style={{ fontFamily: 'var(--f-mono)', fontSize: 12, color: 'var(--c-ink-faint)', padding: '24px' }}>
                 Add your interests to InterestsSection.tsx
               </p>
+            )
           }
         </div>
       </div>
