@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import '../styles/CanvasSection.css'
 
-const COLS = 100
+const COLS = 148
 const ROWS = 50
 
 const PALETTE = [
@@ -59,7 +59,6 @@ export default function CanvasSection() {
           <h2 className="section-heading">Leave your <em>mark</em></h2>
           <p className="canvas-section__sub">
             Pick a color, paint a pixel. Everyone who visits can contribute.
-            Heavily inspired by the community project done by 'r/place'.
           </p>
         </div>
 
