@@ -1,97 +1,125 @@
 /* ===== InterestsSection.css ===== */
 
 .interests {
-  padding: var(--section-pad) var(--page-margin);
+  /* Extra top padding so header sits higher up */
+  padding-top: calc(var(--section-pad) * 0.6);
+  padding-bottom: var(--section-pad);
   background: var(--c-bg);
   border-top: 1px solid var(--c-border);
 }
 
-.interests__inner {
-  max-width: 900px;
+/* ── Header — big, top-left ── */
+.interests__header {
+  padding: 0 var(--page-margin);
+  margin-bottom: 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.interests__header .section-label {
+  font-family: var(--f-sans);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--c-ink);
+  text-transform: none;
 }
 
 .interests__subtitle {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  color: var(--c-ink-faint);
-  letter-spacing: 1px;
-  margin-top: -36px;
-  margin-bottom: 48px;
+  font-family: var(--f-sans);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 400;
+  color: var(--c-ink-soft);
   font-style: italic;
+  letter-spacing: -0.3px;
 }
 
-.interests__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1px;
-  background: var(--c-border);
-  border: 1px solid var(--c-border);
-  border-radius: 2px;
-  overflow: hidden;
+/* ── Track wrapper ── */
+.interests__track-wrap {
+  position: relative;
+  width: 100%;
 }
 
+/* ── Scrollable track — NO snap so it never locks ── */
+.interests__track {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* Intentionally NO scroll-snap-type — free scrolling only */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 24px 0 56px;
+  cursor: grab;
+}
+
+.interests__track::-webkit-scrollbar { display: none; }
+.interests__track:active { cursor: grabbing; }
+
+/* ── Each item ── */
 .interest-item {
-  background: var(--c-bg);
-  padding: 28px 24px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  transition: background 0.4s var(--ease);
+  align-items: center;
+  gap: 8px;
   cursor: default;
-  position: relative;
-  overflow: hidden;
+  transform-origin: center center;
+  user-select: none;
+  will-change: transform, opacity;
 }
 
-.interest-item:hover { background: var(--c-bg-warm); }
+.interest-item--link { cursor: pointer; }
 
+/* ── Big label ── */
 .interest-item__label {
   font-family: var(--f-sans);
-  font-size: 22px;
-  font-weight: 600;
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: 800;
   color: var(--c-ink);
-  line-height: 1.2;
-  transition: color 0.4s var(--ease);
-  position: relative;
-  min-height: 1.4em;
-}
-
-.interest-item__desc {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  color: var(--c-ink-faint);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  transition: color 0.4s var(--ease);
-}
-
-/* ── Secret tile ── */
-.interest-item--secret { cursor: pointer; }
-
-.interest-item--secret .interest-item__label-default,
-.interest-item--secret .interest-item__label-hover {
-  display: block;
-  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
-}
-
-.interest-item--secret .interest-item__label-hover {
-  position: absolute;
-  top: 0; left: 0;
-  opacity: 0;
-  transform: translateY(6px);
-  color: var(--c-brown);
+  line-height: 1;
+  letter-spacing: -2px;
   white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
-.interest-item--secret:hover .interest-item__label-default {
-  opacity: 0;
-  transform: translateY(-6px);
+.interest-item--active .interest-item__label {
+  color: var(--c-brown);
 }
 
-.interest-item--secret:hover .interest-item__label-hover {
-  opacity: 1;
-  transform: translateY(0);
+/* ── Sub label ── */
+.interest-item__sub {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--c-ink-faint);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-.interest-item--secret:hover .interest-item__desc {
-  color: var(--c-khaki);
+/* ── Edge fades ── */
+.interests__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.interests__fade--left {
+  left: 0;
+  background: linear-gradient(to right, var(--c-bg) 20%, transparent 100%);
+}
+
+.interests__fade--right {
+  right: 0;
+  background: linear-gradient(to left, var(--c-bg) 20%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+  .interests__track { gap: 48px; }
+  .interest-item__label { letter-spacing: -1px; }
+  .interests__fade { width: 80px; }
 }
