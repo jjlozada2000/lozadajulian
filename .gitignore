@@ -1,12 +1,7 @@
-# Mac
-.DS_Store
-
-# Frontend
+node_modules/
 frontend/node_modules/
-frontend/dist/
-
-# Backend build output
 backend/target/
-
-# Secrets — never commit
-backend/src/main/resources/application.properties
+.DS_Store
+frontend/dist/
+.vite/
+*.log
