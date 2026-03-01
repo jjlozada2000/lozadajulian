@@ -4,10 +4,11 @@
   padding: var(--section-pad) var(--page-margin);
   background: var(--c-bg);
   border-top: 1px solid var(--c-border);
+  padding-right: 140px;
 }
 
 .canvas-section__inner {
-  max-width: 900px;
+  max-width: 100%;
 }
 
 .canvas-section__sub {
@@ -20,7 +21,6 @@
   line-height: 1.7;
 }
 
-/* ── Controls ── */
 .canvas-section__controls {
   display: flex;
   align-items: center;
@@ -43,15 +43,9 @@
   transition: border-color 0.2s;
 }
 
-.canvas-section__name::placeholder {
-  color: var(--c-ink-faint);
-}
+.canvas-section__name::placeholder { color: var(--c-ink-faint); }
+.canvas-section__name:focus { border-color: var(--c-khaki); }
 
-.canvas-section__name:focus {
-  border-color: var(--c-khaki);
-}
-
-/* ── Palette ── */
 .canvas-section__palette {
   display: flex;
   gap: 6px;
@@ -68,16 +62,10 @@
   outline: 1px solid var(--c-border);
 }
 
-.canvas-section__swatch:hover {
-  transform: scale(1.2);
-}
+.canvas-section__swatch:hover { transform: scale(1.2); }
+.canvas-section__swatch--active { border-color: var(--c-ink); transform: scale(1.2); }
 
-.canvas-section__swatch--active {
-  border-color: var(--c-ink);
-  transform: scale(1.2);
-}
-
-/* ── Grid ── */
+/* Grid fills all available width, stops at padding-right before nav dots */
 .canvas-section__grid-wrap {
   overflow-x: auto;
   border: 1px solid var(--c-border);
@@ -115,4 +103,8 @@
   color: var(--c-ink-faint);
   letter-spacing: 1px;
   margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .canvas-section { padding-right: var(--page-margin); }
 }

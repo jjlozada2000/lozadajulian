@@ -17,7 +17,7 @@ export interface Photo {
 export const PHOTOS: Photo[] = [
   {
     id: 1,
-    src: '/photos/placeholder-1.jpg',
+    src: '/photos/DSCF0081.JPG',
     title: 'Golden Hour',
     camera: 'Canon AE-1',
     film: 'Kodak Portra 400',
@@ -27,7 +27,7 @@ export const PHOTOS: Photo[] = [
   },
   {
     id: 2,
-    src: '/photos/placeholder-2.jpg',
+    src: '/photos/DSCF0072.JPG',
     title: 'Quiet Street',
     camera: 'Minolta X-700',
     film: 'Fujifilm Superia 200',
@@ -37,7 +37,7 @@ export const PHOTOS: Photo[] = [
   },
   {
     id: 3,
-    src: '/photos/placeholder-3.jpg',
+    src: '/photos/DSCF0325.JPG',
     title: 'Tide Pools',
     camera: 'Canon AE-1',
     film: 'Ilford HP5 Plus',
@@ -47,7 +47,7 @@ export const PHOTOS: Photo[] = [
   },
   {
     id: 4,
-    src: '/photos/placeholder-4.jpg',
+    src: '/photos/DSCF0518.JPG',
     title: 'City at Dusk',
     camera: 'Sony A7III',
     film: 'Digital',

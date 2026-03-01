@@ -23,7 +23,6 @@ export default function HeroSection() {
     <section className="hero">
       <div className="hero__inner">
 
-        {/* Top row — location + links */}
         <div className="hero__top">
           <span className="hero__location">{SITE.location}</span>
           <div className="hero__links">
@@ -32,15 +31,13 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Name */}
         <div className="hero__name-wrap">
           <h1 className="hero__name">
             <span className="hero__name-first">Julian</span>
-            <span className="hero__name-last"><em>Lozada</em></span>
+            <span className="hero__name-last">Lozada</span>
           </h1>
         </div>
 
-        {/* Bottom row — role + scroll hint */}
         <div className="hero__bottom">
           <p className="hero__role">{SITE.role}</p>
           <div className="hero__scroll">
@@ -50,8 +47,6 @@ export default function HeroSection() {
         </div>
 
       </div>
-
-      {/* Ticker strip */}
       <Ticker />
     </section>
   )

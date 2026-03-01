@@ -6,7 +6,7 @@ export const SITE = {
   name: 'Julian Lozada',
   role: 'Software Engineer',
   location: 'Los Angeles, CA',
-  email: 'j.julian.lozada@gmail.com',   // ← your real email
+  email: 'j.julian.lozada@gmail.com',
   github: 'https://github.com/jjlozada2000',
   linkedin: 'https://www.linkedin.com/in/julian-lozada-2b7ab1228/',
 }
