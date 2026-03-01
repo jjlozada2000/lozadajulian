@@ -1,0 +1,9 @@
+[build]
+builder = "nixpacks"
+
+[build.env]
+JAVA_HOME = "/root/.local/share/mise/installs/java/21.0.2"
+MAVEN_OPTS = "-Dmaven.repo.local=.m2/repository"
+
+[deploy]
+startCommand = "java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar"
