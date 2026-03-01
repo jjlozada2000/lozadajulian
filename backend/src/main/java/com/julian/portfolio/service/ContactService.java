@@ -39,7 +39,8 @@ public class ContactService {
         sendNotificationEmail(req);
     }
 
-    private void sendNotificationEmail(ContactRequest req) {
+private void sendNotificationEmail(ContactRequest req) {
+    try {
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setFrom(senderEmail);
         mail.setTo(recipientEmail);
@@ -51,7 +52,12 @@ public class ContactService {
             "Message:\n" + req.getMessage()
         );
         mailSender.send(mail);
+        System.out.println("Email sent successfully to " + recipientEmail);
+    } catch (Exception e) {
+        System.err.println("Failed to send email: " + e.getMessage());
+        e.printStackTrace();
     }
+}
 
     private String getClientIp(HttpServletRequest request) {
         String forwarded = request.getHeader("X-Forwarded-For");
