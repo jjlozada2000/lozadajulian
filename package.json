@@ -1,0 +1,8 @@
+{
+  "name": "portfolio",
+  "scripts": {
+    "dev": "npm run frontend & npm run backend",
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && ./mvnw spring-boot:run"
+  }
+}
