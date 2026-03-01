@@ -38,37 +38,42 @@ public class ContactService {
     }
 
     private void sendNotificationEmail(ContactRequest req) {
-        try {
-            String apiKey = System.getenv("RESEND_API_KEY");
-            if (apiKey == null || apiKey.isBlank()) {
-                System.err.println("RESEND_API_KEY is not set");
-                return;
-            }
-
-            String body = "{"
-                + "\"from\":\"Portfolio Contact <contact@lozadajulian.com>\","
-                + "\"to\":[\"" + recipientEmail + "\"],"
-                + "\"reply_to\":\"" + req.getEmail() + "\","
-                + "\"subject\":\"Portfolio contact from " + req.getName() + "\","
-                + "\"text\":\"Name: " + req.getName() + "\\nEmail: " + req.getEmail() + "\\n\\nMessage:\\n" + req.getMessage() + "\""
-                + "}";
-
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.resend.com/emails"))
-                .header("Authorization", "Bearer " + apiKey)
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(body))
-                .build();
-
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println("Resend response: " + response.statusCode() + " " + response.body());
-
-        } catch (Exception e) {
-            System.err.println("Failed to send email: " + e.getMessage());
-            e.printStackTrace();
+    try {
+        String apiKey = System.getenv("RESEND_API_KEY");
+        if (apiKey == null || apiKey.isBlank()) {
+            System.err.println("RESEND_API_KEY is not set");
+            return;
         }
+
+        // Safely escape strings for JSON
+        String name = req.getName().replace("\\", "\\\\").replace("\"", "\\\"");
+        String email = req.getEmail().replace("\\", "\\\\").replace("\"", "\\\"");
+        String message = req.getMessage().replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "");
+
+        String body = "{"
+            + "\"from\":\"Portfolio Contact <contact@lozadajulian.com>\","
+            + "\"to\":[\"" + recipientEmail + "\"],"
+            + "\"reply_to\":\"" + email + "\","
+            + "\"subject\":\"Portfolio contact from " + name + "\","
+            + "\"text\":\"Name: " + name + "\\nEmail: " + email + "\\n\\nMessage:\\n" + message + "\""
+            + "}";
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://api.resend.com/emails"))
+            .header("Authorization", "Bearer " + apiKey)
+            .header("Content-Type", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(body))
+            .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println("Resend response: " + response.statusCode() + " " + response.body());
+
+    } catch (Exception e) {
+        System.err.println("Failed to send email: " + e.getMessage());
+        e.printStackTrace();
     }
+}
 
     private String getClientIp(HttpServletRequest request) {
         String forwarded = request.getHeader("X-Forwarded-For");
