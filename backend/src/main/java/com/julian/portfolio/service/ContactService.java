@@ -5,25 +5,23 @@ import com.julian.portfolio.model.ContactMessage;
 import com.julian.portfolio.repository.ContactMessageRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 @Service
 public class ContactService {
 
     private final ContactMessageRepository repo;
-    private final JavaMailSender mailSender;
 
     @Value("${app.contact.recipient-email}")
     private String recipientEmail;
 
-    @Value("${spring.mail.username}")
-    private String senderEmail;
-
-    public ContactService(ContactMessageRepository repo, JavaMailSender mailSender) {
+    public ContactService(ContactMessageRepository repo) {
         this.repo = repo;
-        this.mailSender = mailSender;
     }
 
     public void handleSubmission(ContactRequest req, HttpServletRequest httpReq) {
@@ -35,29 +33,42 @@ public class ContactService {
         msg.setIpAddress(getClientIp(httpReq));
         repo.save(msg);
 
-        // 2. Forward to your inbox
+        // 2. Forward to your inbox via Resend
         sendNotificationEmail(req);
     }
 
-private void sendNotificationEmail(ContactRequest req) {
-    try {
-        SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setFrom(senderEmail);
-        mail.setTo(recipientEmail);
-        mail.setReplyTo(req.getEmail());
-        mail.setSubject("Portfolio contact from " + req.getName());
-        mail.setText(
-            "Name:    " + req.getName() + "\n" +
-            "Email:   " + req.getEmail() + "\n\n" +
-            "Message:\n" + req.getMessage()
-        );
-        mailSender.send(mail);
-        System.out.println("Email sent successfully to " + recipientEmail);
-    } catch (Exception e) {
-        System.err.println("Failed to send email: " + e.getMessage());
-        e.printStackTrace();
+    private void sendNotificationEmail(ContactRequest req) {
+        try {
+            String apiKey = System.getenv("RESEND_API_KEY");
+            if (apiKey == null || apiKey.isBlank()) {
+                System.err.println("RESEND_API_KEY is not set");
+                return;
+            }
+
+            String body = "{"
+                + "\"from\":\"Portfolio Contact <onboarding@resend.dev>\","
+                + "\"to\":[\"" + recipientEmail + "\"],"
+                + "\"reply_to\":\"" + req.getEmail() + "\","
+                + "\"subject\":\"Portfolio contact from " + req.getName() + "\","
+                + "\"text\":\"Name: " + req.getName() + "\\nEmail: " + req.getEmail() + "\\n\\nMessage:\\n" + req.getMessage() + "\""
+                + "}";
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://api.resend.com/emails"))
+                .header("Authorization", "Bearer " + apiKey)
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println("Resend response: " + response.statusCode() + " " + response.body());
+
+        } catch (Exception e) {
+            System.err.println("Failed to send email: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
-}
 
     private String getClientIp(HttpServletRequest request) {
         String forwarded = request.getHeader("X-Forwarded-For");
