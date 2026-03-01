@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173,
     proxy: {
+      // All /api/* requests from the frontend get forwarded to Spring Boot
       '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true,
