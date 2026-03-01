@@ -56,9 +56,9 @@ export default function CanvasSection() {
       <div className="canvas-section__inner">
         <div className="reveal">
           <span className="section-label">Guest Canvas</span>
-          <h2 className="section-heading">Leave your <em>mark</em></h2>
+          <h2 className="section-heading">Draw <em>something</em>!</h2>
           <p className="canvas-section__sub">
-            Pick a color, paint a pixel. Everyone who visits can contribute.
+            Each pixel you place is saved and attributed to you (if you input a name). This is heavily inspired by a community project done by Reddit's r/place.
           </p>
         </div>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/AboutSection.css'
 
 const BIO_LINES = [
@@ -8,8 +8,42 @@ const BIO_LINES = [
 ]
 
 const PHOTO_PATH = '/about.jpeg'
+const RESUME_PATH = '/assets/JulianLozadaResume.pdf'
+
+function ResumeModal({ onClose }: { onClose: () => void }) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    document.body.style.overflow = 'hidden'
+    return () => { window.removeEventListener('keydown', handler); document.body.style.overflow = '' }
+  }, [onClose])
+
+  return (
+    <div className="resume-modal" role="dialog" aria-modal="true">
+      <div className="resume-modal__backdrop" onClick={onClose} />
+      <div className="resume-modal__panel">
+        <button className="resume-modal__close" onClick={onClose}>✕</button>
+        <div className="resume-modal__header">
+          <h2 className="resume-modal__title">Resume</h2>
+          <a href={RESUME_PATH} download className="resume-modal__download">
+            Download PDF ↓
+          </a>
+        </div>
+        <div className="resume-modal__body">
+          <iframe
+            src={RESUME_PATH}
+            className="resume-modal__iframe"
+            title="Julian Lozada Resume"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function AboutSection() {
+  const [showResume, setShowResume] = useState(false)
+
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault()
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
@@ -39,13 +73,20 @@ export default function AboutSection() {
                 <p key={i}>{line}</p>
               ))}
             </div>
-            <a href="#contact" onClick={scrollToContact} className="about__cta">
-              Get in touch →
-            </a>
+            <div className="about__actions">
+              <button onClick={() => setShowResume(true)} className="about__resume-link">
+                My Resume →
+              </button>
+              <a href="#contact" onClick={scrollToContact} className="about__cta">
+                Get in touch →
+              </a>
+            </div>
           </div>
         </div>
 
       </div>
+
+      {showResume && <ResumeModal onClose={() => setShowResume(false)} />}
     </section>
   )
 }

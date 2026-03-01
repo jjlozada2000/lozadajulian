@@ -86,7 +86,7 @@ export default function ContactSection() {
             <div className="contact__field">
               <label className="contact__label" htmlFor="c-message">Message</label>
               <textarea id="c-message" name="message" className="contact__textarea"
-                placeholder="What's on your mind?" value={form.message} onChange={handleChange}
+                placeholder="Send a fun fact" value={form.message} onChange={handleChange}
                 required disabled={status === 'sending'} />
             </div>
 

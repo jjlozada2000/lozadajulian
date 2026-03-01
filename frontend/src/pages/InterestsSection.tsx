@@ -13,7 +13,7 @@ const INTERESTS: Interest[] = [
   {
     id: 'photography',
     label: 'Photography',
-    sub: 'film & digital',
+    sub: 'check out some of my photos',
     onClick: () => navigate('/photography'),
   },
   {
