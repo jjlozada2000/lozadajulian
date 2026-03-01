@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://lozadajulian.onrender.com/api/:path*"
+    }
+  ]
+}
