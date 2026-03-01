@@ -31,18 +31,19 @@ const INTERESTS: Interest[] = [
     label: 'Bowling',
     sub: 'cannot break over 200 still',
   }
-  // { id: 'coffee',  label: 'Coffee',  sub: 'always brewing' },
-  // { id: 'ocean',   label: 'Ocean',   sub: 'salt & surf' },
-  // { id: 'gaming',  label: 'Gaming',  sub: 'competitive & casual' },
 ]
 
-// Many copies so the user never reaches an edge during normal use
 const REPEAT = 20
 const REPEATED = Array.from({ length: REPEAT }, () => INTERESTS).flat()
 const COUNT = INTERESTS.length
 
 export default function InterestsSection() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const isDragging = useRef(false)
+  const dragStartX = useRef(0)
+  const dragStartScroll = useRef(0)
+  const didDrag = useRef(false)
+
   const [styles, setStyles] = useState<Array<{
     opacity: number
     scale: number
@@ -76,7 +77,6 @@ export default function InterestsSection() {
     const track = trackRef.current
     if (!track) return
     const cards = Array.from(track.querySelectorAll<HTMLElement>('.interest-item'))
-    // Start at the midpoint copy so the user has ~10 copies in each direction
     const midIndex = Math.floor(REPEAT / 2) * COUNT
     const midCard = cards[midIndex]
     if (!midCard) return
@@ -95,6 +95,43 @@ export default function InterestsSection() {
     }
   }, [measure])
 
+  // Mouse drag handlers
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    const track = trackRef.current
+    if (!track) return
+    isDragging.current = true
+    didDrag.current = false
+    dragStartX.current = e.clientX
+    dragStartScroll.current = track.scrollLeft
+    track.style.cursor = 'grabbing'
+    track.style.userSelect = 'none'
+  }, [])
+
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging.current) return
+    const track = trackRef.current
+    if (!track) return
+    const dx = e.clientX - dragStartX.current
+    if (Math.abs(dx) > 3) didDrag.current = true
+    track.scrollLeft = dragStartScroll.current - dx
+  }, [])
+
+  const onMouseUp = useCallback(() => {
+    const track = trackRef.current
+    if (!track) return
+    isDragging.current = false
+    track.style.cursor = 'grab'
+    track.style.userSelect = ''
+  }, [])
+
+  const onMouseLeave = useCallback(() => {
+    const track = trackRef.current
+    if (!track) return
+    isDragging.current = false
+    track.style.cursor = 'grab'
+    track.style.userSelect = ''
+  }, [])
+
   return (
     <section id="interests" className="interests">
       <div className="interests__header reveal">
@@ -103,7 +140,15 @@ export default function InterestsSection() {
       </div>
 
       <div className="interests__track-wrap">
-        <div className="interests__track" ref={trackRef}>
+        <div
+          className="interests__track"
+          ref={trackRef}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeave={onMouseLeave}
+          style={{ cursor: 'grab' }}
+        >
           {REPEATED.map((item, i) => {
             const s = styles[i] ?? { opacity: 0.22, scale: 0.68, translateY: 10, isActive: false }
 
@@ -111,7 +156,7 @@ export default function InterestsSection() {
               <div
                 key={`${item.id}-${i}`}
                 className={`interest-item ${s.isActive ? 'interest-item--active' : ''} ${item.onClick ? 'interest-item--link' : ''}`}
-                onClick={s.isActive ? item.onClick : undefined}
+                onClick={s.isActive && !didDrag.current ? item.onClick : undefined}
                 tabIndex={s.isActive ? 0 : -1}
                 onKeyDown={(e) => e.key === 'Enter' && s.isActive && item.onClick?.()}
                 style={{
