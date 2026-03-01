@@ -46,7 +46,7 @@ public class ContactService {
             }
 
             String body = "{"
-                + "\"from\":\"Portfolio Contact <onboarding@resend.dev>\","
+                + "\"from\":\"Portfolio Contact <contact@lozadajulian.com>\","
                 + "\"to\":[\"" + recipientEmail + "\"],"
                 + "\"reply_to\":\"" + req.getEmail() + "\","
                 + "\"subject\":\"Portfolio contact from " + req.getName() + "\","
