@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../styles/AboutSection.css'
 
 const BIO_LINES = [
-  "Hi, I'm Julian, a software engineer based in Los Angeles.",
+  "Hi, I'm Julian, a software engineer based in Los Angeles. You can find my resume attached below!",
   "I enjoy programming in C++, Python, Java, React, and TypeScript. I work best in teams while building things people enjoy.",
   "If I'm not coding, you can find me playing video games, taking photos, finding coffee, or searching for my new hobby",
 ]
