@@ -14,13 +14,13 @@ export const SITE = {
 // Ticker items — scroll across the hero
 export const TICKER_ITEMS = [
   'Software Engineer',
+  'Product/Project Management',
   'Los Angeles',
   'Python · Java · React · TypeScript',
-  'Film Photography',
+  'Photography',
   'Coffee',
   'Gamer',
   'Open to Opportunities',
-  'Ocean Lover',
 ]
 
 // Nav sections

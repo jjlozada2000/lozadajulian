@@ -3,8 +3,8 @@ import '../styles/AboutSection.css'
 
 const BIO_LINES = [
   "Hi, I'm Julian, a software engineer based in Los Angeles.",
-  "I enjoy programming in C++, Python, Java, React, and TypeScript. I enjoy the process of working in teams and building things people enjoy.",
-  "If I'm not coding, you can find me playing video games, taking photos, finding coffee, or finding my new hobby",
+  "I enjoy programming in C++, Python, Java, React, and TypeScript. I work best in teams while building things people enjoy.",
+  "If I'm not coding, you can find me playing video games, taking photos, finding coffee, or searching for my new hobby",
 ]
 
 const PHOTO_PATH = '/about.jpeg'

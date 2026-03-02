@@ -96,13 +96,13 @@ export default function PhotographyPage() {
   return (
     <div className="photo-page">
       <nav className="photo-page__nav">
-        <a href="/" className="photo-page__back">← Back to julianl.com</a>
+        <a href="/" className="photo-page__back">← Back to lozadajulian.com</a>
         <span className="photo-page__nav-title">julian lozada / photography</span>
       </nav>
 
       <header className="photo-page__header">
-        <p className="photo-page__eyebrow">A collection of moments</p>
-        <h1 className="photo-page__title">Shot on <em>film & pixel</em></h1>
+        <p className="photo-page__eyebrow">A collection of memories</p>
+        <h1 className="photo-page__title">Shot on <em>film & digital</em></h1>
         <p className="photo-page__meta">{PHOTOS.length} photographs · Los Angeles & beyond</p>
       </header>
 

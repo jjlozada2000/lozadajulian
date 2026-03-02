@@ -19,9 +19,23 @@ const PROJECTS: Project[] = [
     description: 'My senior Project. A student-led interdisciplinary team developing low-cost, open-source tools for marine wildlife tracking. SEAtech Research Initiative is a student-led interdisciplinary team developing low-cost, open-source tools for marine wildlife tracking. Formed from a university course and now operating as an interdisciplinary campus research club, we unite CS, GIS, and marine biology students to build a complete sensor-to-map system for sea turtles in the San Andrés Archipelago. Our work focuses on expanding access to affordable telemetry and advancing geospatial intelligence for conservation.',
     year: '2025–2026',
     tags: ['React', 'TypeScript', 'Flask'],
-    github: 'https://github.com/cnguye-n/seatech-web',
     live: 'https://seatech-web.vercel.app/',
   },
+  {
+    id: 2,
+    title: 'EcoSim [WIP]',
+    description: 'A web-based ecosystem simulation game built with React and TypeScript. Players create and manage their own virtual ecosystems, balancing factors like species diversity, resource availability, and environmental conditions to thrive. The project features procedurally generated worlds, dynamic weather systems, and an educational component that teaches players about ecological principles through interactive gameplay.',
+    year: '2026',
+    tags: ['React', 'TypeScript', 'Canvas API','WebGL'],
+    live: 'for demo purposes only, link coming soon!',
+  },
+  {
+    id: 3,
+    title: 'Personal Portfolio Website',
+    description: 'The website you\'re currently on! Built with React and TypeScript, this portfolio was made to showcase my skills and interests. It features a custom-built lightbox for photo viewing, a responsive design for seamless browsing on any device, and an interactive navigation system that highlights different sections as you scroll. The site is designed to be fast, accessible, and visually engaging, reflecting my focus on both technology and design. I learned a lot while building this, and it continues to be a work in progress as I add new projects and features over time. It was deployed using Vercel for the frontend, Render for the backend, PostgreSQL for the database, and Resend for email handling.',
+    year: '2026',
+    tags: ['React', 'TypeScript', 'CSS'],
+  }
   // Add more projects here:
   // {
   //   id: 2,
@@ -36,7 +50,7 @@ const PROJECTS: Project[] = [
 // ============================================================
 // Edit your general note here — appears under the heading
 // ============================================================
-const WORK_NOTE = "These are projects I've chosen because they reflect how I think about building things — with intention, in teams, and for real impact. Each one pushed me to learn something new and ship something I'm proud of."
+const WORK_NOTE = "These are projects I've chosen because they best reflect my current skills as I become a better programmer. Each one pushed me to learn something new and ship something I'm proud of."
 
 // ── Preview panel ─────────────────────────────────────────────────────────────
 function PreviewPanel({ url, label }: { url: string; label: string }) {
