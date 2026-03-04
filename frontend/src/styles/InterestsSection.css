@@ -1,5 +1,3 @@
-/* ===== InterestsSection.css ===== */
-
 .interests {
   /* Extra top padding so header sits higher up */
   padding-top: calc(var(--section-pad) * 0.6);
@@ -8,7 +6,7 @@
   border-top: 1px solid var(--c-border);
 }
 
-/* ── Header — big, top-left ── */
+/* - Header — big, top-left - */
 .interests__header {
   padding: 0 var(--page-margin);
   margin-bottom: 52px;
@@ -35,13 +33,13 @@
   letter-spacing: -0.3px;
 }
 
-/* ── Track wrapper ── */
+/* - Track wrapper - */
 .interests__track-wrap {
   position: relative;
   width: 100%;
 }
 
-/* ── Scrollable track — NO snap so it never locks ── */
+/* - Scrollable track — NO snap so it never locks - */
 .interests__track {
   display: flex;
   align-items: center;
@@ -58,7 +56,7 @@
 .interests__track::-webkit-scrollbar { display: none; }
 .interests__track:active { cursor: grabbing; }
 
-/* ── Each item ── */
+/* - Each item - */
 .interest-item {
   flex-shrink: 0;
   display: flex;
@@ -73,7 +71,7 @@
 
 .interest-item--link { cursor: pointer; }
 
-/* ── Big label ── */
+/* - Big label - */
 .interest-item__label {
   font-family: var(--f-sans);
   font-size: clamp(40px, 7vw, 88px);
@@ -89,7 +87,7 @@
   color: var(--c-brown);
 }
 
-/* ── Sub label ── */
+/* - Sub label - */
 .interest-item__sub {
   font-family: var(--f-mono);
   font-size: 11px;
@@ -98,7 +96,7 @@
   text-transform: uppercase;
 }
 
-/* ── Edge fades ── */
+/* - Edge fades - */
 .interests__fade {
   position: absolute;
   top: 0;

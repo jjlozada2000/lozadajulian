@@ -27,7 +27,7 @@ export default function SideNav() {
 
   return (
     <>
-      {/* ── Desktop nav (unchanged) ── */}
+      {/* ─ Desktop nav ─ */}
       <nav className="sidenav sidenav--desktop" aria-label="Section navigation">
         {NAV_SECTIONS.map(({ id, label }, i) => {
           const isLeft = i % 2 === 0
@@ -46,7 +46,7 @@ export default function SideNav() {
         })}
       </nav>
 
-      {/* ── Mobile nav ── */}
+      {/* ─ Mobile nav ─ */}
       {mobileOpen && (
         <div className="sidenav-mobile__backdrop" onClick={() => setMobileOpen(false)} />
       )}

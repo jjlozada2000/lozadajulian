@@ -1,7 +1,3 @@
-// ============================================================
-// SITE CONFIG — edit your content here
-// ============================================================
-
 export const SITE = {
   name: 'Julian Lozada',
   role: 'Software Engineer',
@@ -11,7 +7,7 @@ export const SITE = {
   linkedin: 'https://www.linkedin.com/in/julian-lozada-2b7ab1228/',
 }
 
-// Ticker items — scroll across the hero
+// scrolling hero titles
 export const TICKER_ITEMS = [
   'Software Engineer',
   'Product/Project Management',

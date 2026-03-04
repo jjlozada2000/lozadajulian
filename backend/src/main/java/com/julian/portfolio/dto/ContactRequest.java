@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-// ── Contact form request ──────────────────────────────────────────────────────
+// Contact form request
 public class ContactRequest {
 
     @NotBlank(message = "Name is required")

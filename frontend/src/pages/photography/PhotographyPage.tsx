@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { PHOTOS, Photo } from './photoData'
 import '../../styles/PhotographyPage.css'
 
-// ── Lightbox ──────────────────────────────────────────────────────────────────
+// Lightbox 
 function Lightbox({
   photo, index, total, onClose, onPrev, onNext,
 }: {
@@ -66,7 +66,7 @@ function Lightbox({
   )
 }
 
-// ── Card ──────────────────────────────────────────────────────────────────────
+// Card
 function PhotoCard({ photo, onClick }: { photo: Photo; onClick: () => void }) {
   const isPlaceholder = photo.src.includes('placeholder')
   return (
@@ -86,7 +86,7 @@ function PhotoCard({ photo, onClick }: { photo: Photo; onClick: () => void }) {
   )
 }
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+// Page
 export default function PhotographyPage() {
   const [lbIndex, setLbIndex] = useState<number | null>(null)
   const close  = () => setLbIndex(null)

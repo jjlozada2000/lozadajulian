@@ -37,7 +37,7 @@ export default function ContactSection() {
       <div className="contact__inner">
         <div className="contact__layout">
 
-          {/* ── Left: info ── */}
+          {/* ─ Left: info ─ */}
           <div className="contact__left reveal">
             <span className="section-label">Contact</span>
             <h2 className="contact__heading">Get in <em>touch</em></h2>
@@ -69,7 +69,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* ── Right: form ── */}
+          {/* ─ Right: form ─ */}
           <form className="contact__form reveal reveal-delay-1" onSubmit={handleSubmit} noValidate>
             <div className="contact__field">
               <label className="contact__label" htmlFor="c-name">Name</label>

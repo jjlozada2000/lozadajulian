@@ -1,8 +1,3 @@
-// ============================================================
-// PHOTO DATA — edit this to add your photos
-// ============================================================
-// Drop images into /public/photos/ and update src paths below
-
 export interface Photo {
   id: number
   src: string
