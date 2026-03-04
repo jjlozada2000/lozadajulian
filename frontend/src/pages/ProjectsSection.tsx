@@ -24,10 +24,10 @@ const PROJECTS: Project[] = [
   {
     id: 2,
     title: 'EcoSim [WIP]',
-    description: 'A web-based ecosystem simulation game built with React and TypeScript. Players create and manage their own virtual ecosystems, balancing factors like species diversity, resource availability, and environmental conditions to thrive. The project features procedurally generated worlds, dynamic weather systems, and an educational component that teaches players about ecological principles through interactive gameplay.',
+    description: "A web-based ecosystem simulation game built with React and TypeScript. Players create and manage their own virtual ecosystems, balancing factors like species diversity, resource availability, and environmental conditions to thrive. The project features procedurally generated worlds, dynamic weather systems, and an educational component that teaches players about ecological principles through interactive gameplay. Demo coming soon!",
     year: '2026',
     tags: ['React', 'TypeScript', 'Canvas API','WebGL'],
-    live: 'for demo purposes only, link coming soon!',
+    // live: 'for demo purposes only, link coming soon!',
   },
   {
     id: 3,
