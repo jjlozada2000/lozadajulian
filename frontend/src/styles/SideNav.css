@@ -1,9 +1,3 @@
-/* ===== SideNav.css ===== */
-
-/* ══════════════════════════════════════
-   DESKTOP NAV
-   ══════════════════════════════════════ */
-
 .sidenav--desktop {
   position: fixed;
   right: 32px;
@@ -70,10 +64,7 @@
   }
 }
 
-/* ══════════════════════════════════════
-   MOBILE NAV — hidden on desktop
-   ══════════════════════════════════════ */
-
+/* - Mobile nav - */
 .sidenav-mobile {
   display: none;
 }
@@ -87,7 +78,7 @@
     z-index: 1000;
   }
 
-  /* ── Backdrop ── */
+  /* - Backdrop - */
   .sidenav-mobile__backdrop {
     position: fixed;
     inset: 0;
@@ -97,7 +88,7 @@
     animation: mobileNavFade 0.2s ease;
   }
 
-  /* ── Trigger dot ── */
+  /* - Trigger dot - */
   .sidenav-mobile__trigger {
     width: 48px;
     height: 48px;
@@ -136,7 +127,7 @@
     transform: scale(0.8);
   }
 
-  /* ── Menu ── */
+  /* - Menu - */
   .sidenav-mobile__menu {
     position: absolute;
     bottom: 60px;
@@ -151,7 +142,7 @@
     pointer-events: auto;
   }
 
-  /* ── Links ── */
+  /* - Links - */
   .sidenav-mobile__link {
     font-family: var(--f-mono);
     font-size: 11px;

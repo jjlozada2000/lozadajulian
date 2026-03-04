@@ -1,5 +1,3 @@
-/* ===== AboutSection.css ===== */
-
 .about {
   padding: var(--section-pad) var(--page-margin);
   background: var(--c-bg-warm);
@@ -25,7 +23,7 @@
   text-align: left;
 }
 
-/* ── Portrait ── */
+/* ─ Portrait ─ */
 .about__portrait {
   display: flex;
   flex-direction: column;
@@ -54,7 +52,7 @@
   filter: saturate(1);
 }
 
-/* ── Text ── */
+/* ─ Text ─ */
 .about__text {
   padding-top: 8px;
 }
@@ -106,7 +104,7 @@
   .about__inner { text-align: left; }
 }
 
-/* ── Resume link + actions row ── */
+/* ─ Resume link and actions row ─ */
 .about__actions {
   display: flex;
   flex-direction: column;
@@ -132,7 +130,7 @@
   color: var(--c-brown);
 }
 
-/* ── Resume Modal ── */
+/* ─ Resume Modal ─ */
 .resume-modal {
   position: fixed;
   inset: 0;

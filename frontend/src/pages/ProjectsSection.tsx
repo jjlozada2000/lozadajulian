@@ -36,7 +36,7 @@ const PROJECTS: Project[] = [
     year: '2026',
     tags: ['React', 'TypeScript', 'CSS'],
   }
-  // Add more projects here:
+  // Format to add more projects
   // {
   //   id: 2,
   //   title: 'Next Project',
@@ -47,12 +47,10 @@ const PROJECTS: Project[] = [
   // },
 ]
 
-// ============================================================
-// Edit your general note here — appears under the heading
-// ============================================================
+// General note about the given projects
 const WORK_NOTE = "These are projects I've chosen because they best reflect my current skills as I become a better programmer. Each one pushed me to learn something new and ship something I'm proud of."
 
-// ── Preview panel ─────────────────────────────────────────────────────────────
+// Preview panel
 function PreviewPanel({ url, label }: { url: string; label: string }) {
   const [loaded, setLoaded] = useState(false)
   const [errored, setErrored] = useState(false)
@@ -84,7 +82,7 @@ function PreviewPanel({ url, label }: { url: string; label: string }) {
   )
 }
 
-// ── Modal ─────────────────────────────────────────────────────────────────────
+// Model
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [activeTab, setActiveTab] = useState<'github' | 'live'>(project.github ? 'github' : 'live')
 
@@ -128,7 +126,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   )
 }
 
-// ── Project row ───────────────────────────────────────────────────────────────
+// Project row 
 function ProjectRow({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) {
   return (
     <div
@@ -149,7 +147,7 @@ function ProjectRow({ project, index, onClick }: { project: Project; index: numb
   )
 }
 
-// ── Section ───────────────────────────────────────────────────────────────────
+// Section
 export default function ProjectsSection() {
   const [selected, setSelected] = useState<Project | null>(null)
   const sorted = [...PROJECTS].sort((a, b) => a.id - b.id)
@@ -172,7 +170,7 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Right: heading + note stacked */}
+        {/* Right: heading and note stacked */}
         <div className="projects__heading-wrap reveal reveal-delay-1">
           <div>
             <span className="section-label">Work</span>
