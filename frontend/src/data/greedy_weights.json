@@ -1,0 +1,15 @@
+{
+  "holes": -7.002755459346655,
+  "aggregate_height": 0.35952069537567904,
+  "bumpiness": -0.7207201079063659,
+  "completed_lines": 5.340091280717806,
+  "max_height": 0.1338585588557928,
+  "right_well_open": 1.1497620009305995,
+  "right_well_depth": 1.0180497330183904,
+  "right_well_blocked": -4.097112624000941,
+  "i_ready_bonus": 1.563401099311473,
+  "perfect_clear_bonus": 35.37821874296454,
+  "perfect_clear_setup": 1.2034913258444815,
+  "danger": -3.1450625563251497,
+  "well_lock_penalty": -6.501171003852711
+}

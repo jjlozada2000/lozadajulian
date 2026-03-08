@@ -31,6 +31,14 @@ const PROJECTS: Project[] = [
   },
   {
     id: 3,
+    title: 'TetrisAI',
+    description: 'A Tetris clone built originally in Python, but then recreated in JavaScript with a custom AI.  The AI uses a heuristic evaluation function to determine the best placement for each piece, considering factors like completed lines, holes created, and overall board height. The game features smooth animations, responsive controls, and a clean interface. It was a fun project that challenged me to implement game logic and AI decision-making in a real-time environment.',
+    year: '2026',
+    tags: ['Python', 'Artficial Intelligence'],
+    live: 'http://localhost:5173/tetris',
+  },
+  {
+    id: 4,
     title: 'Personal Portfolio Website',
     description: 'The website you\'re currently on! Built with React and TypeScript, this portfolio was made to showcase my skills and interests. It features a custom-built lightbox for photo viewing, a responsive design for seamless browsing on any device, and an interactive navigation system that highlights different sections as you scroll. The site is designed to be fast, accessible, and visually engaging, reflecting my focus on both technology and design. I learned a lot while building this, and it continues to be a work in progress as I add new projects and features over time. It was deployed using Vercel for the frontend, Render for the backend, PostgreSQL for the database, and Resend for email handling.',
     year: '2026',

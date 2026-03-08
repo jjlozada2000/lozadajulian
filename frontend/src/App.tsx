@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import MainPage from './pages/MainPage'
 import PhotographyPage from './pages/photography/PhotographyPage'
+import TetrisPage from './pages/TetrisPage'
 
 function useRoute() {
   const [path, setPath] = useState(window.location.pathname)
@@ -20,5 +21,6 @@ export function navigate(to: string) {
 export default function App() {
   const path = useRoute()
   if (path === '/photography') return <PhotographyPage />
+  if (path === '/tetris') return <TetrisPage />
   return <MainPage />
 }
