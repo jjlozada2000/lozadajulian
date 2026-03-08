@@ -32,7 +32,7 @@ const PROJECTS: Project[] = [
   {
     id: 3,
     title: 'TetrisAI',
-    description: 'A Tetris clone built originally in Python, but then recreated in JavaScript with a custom AI.  The AI uses a heuristic evaluation function to determine the best placement for each piece, considering factors like completed lines, holes created, and overall board height. The game features smooth animations, responsive controls, and a clean interface. It was a fun project that challenged me to implement game logic and AI decision-making in a real-time environment.',
+    description: 'TetrisAI is a Python project I built to learn how AI decision-making works in a game environment. I created a custom Tetris implementation with Pygame, then added search-based bots that evaluate possible moves using heuristics like holes, board height, bumpiness, and line clears. I also built scripts for tuning and replaying bot behavior so I could test how different weight configurations affected performance.',
     year: '2026',
     tags: ['Python', 'Artficial Intelligence'],
     live: 'http://localhost:5173/tetris',

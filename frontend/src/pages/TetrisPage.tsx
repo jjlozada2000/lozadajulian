@@ -542,8 +542,8 @@ export default function TetrisPage() {
         <span className="tetris-page__eyebrow">Project</span>
         <h1 className="tetris-page__title">Tetris AI</h1>
         <p className="tetris-page__subtitle">
-          Heuristic tree-search bot with hold piece support.
-          Trained via hill-climbing on hand-crafted board evaluation features.
+          TetrisAI is a Python project I built to learn how AI decision-making works in a game environment. I created a custom Tetris implementation with Pygame, then added search-based bots that evaluate possible moves using heuristics like holes, board height, bumpiness, and line clears. I also built scripts for tuning and replaying bot behavior so I could test how different weight configurations affected performance.
+          Inspired by thesilica's `tetris-ai` project, I used parts of its logic and general approach as a reference, then implemented, tuned, and tested my own Python version through trial and error.
         </p>
       </header>
 
