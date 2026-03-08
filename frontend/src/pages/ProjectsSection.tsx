@@ -35,7 +35,7 @@ const PROJECTS: Project[] = [
     description: 'TetrisAI is a Python project I built to learn how AI decision-making works in a game environment. I created a custom Tetris implementation with Pygame, then added search-based bots that evaluate possible moves using heuristics like holes, board height, bumpiness, and line clears. I also built scripts for tuning and replaying bot behavior so I could test how different weight configurations affected performance.',
     year: '2026',
     tags: ['Python', 'Artficial Intelligence'],
-    live: 'http://localhost:5173/tetris',
+    live: 'http://lozadajulian.com/tetris',
   },
   {
     id: 4,

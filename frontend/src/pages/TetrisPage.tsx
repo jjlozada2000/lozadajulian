@@ -544,6 +544,7 @@ export default function TetrisPage() {
         <p className="tetris-page__subtitle">
           TetrisAI is a Python project I built to learn how AI decision-making works in a game environment. I created a custom Tetris implementation with Pygame, then added search-based bots that evaluate possible moves using heuristics like holes, board height, bumpiness, and line clears. I also built scripts for tuning and replaying bot behavior so I could test how different weight configurations affected performance.
           Inspired by thesilica's `tetris-ai` project, I used parts of its logic and general approach as a reference, then implemented, tuned, and tested my own Python version through trial and error.
+        Trained only with 30 iterations for each bot, the greedy bot can clear around 100 lines, the tree search bot can clear around 200 lines, and the perfect clear bot can clear around 150 lines. With more training and tuning, I believe these numbers could be improved significantly, especially for the tree search bot which would benefit from deeper searches and a larger beam width.
         </p>
       </header>
 
