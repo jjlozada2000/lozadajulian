@@ -295,6 +295,44 @@
   padding: 40px 0; letter-spacing: 1px;
 }
 
+/* ─ Internal route preview ─ */
+.project-preview__internal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.project-preview__internal-text {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  color: var(--c-ink-faint);
+  letter-spacing: 0.5px;
+}
+
+.project-preview__internal-btn {
+  font-family: var(--f-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--c-brown);
+  border: none;
+  border-radius: 6px;
+  padding: 12px 32px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: opacity 0.15s var(--ease), transform 0.15s var(--ease);
+}
+
+.project-preview__internal-btn:hover {
+  opacity: 0.9;
+  transform: translateX(4px);
+}
+
 @media (max-width: 900px) {
   .projects__layout {
     grid-template-columns: 1fr;

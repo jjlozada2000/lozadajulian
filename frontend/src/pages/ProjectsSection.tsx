@@ -29,7 +29,6 @@ const PROJECTS: Project[] = [
     description: "A web-based ecosystem simulation game built with React and TypeScript. Players create and manage their own virtual ecosystems, balancing factors like species diversity, resource availability, and environmental conditions to thrive. The project features procedurally generated worlds, dynamic weather systems, and an educational component that teaches players about ecological principles through interactive gameplay. Demo coming soon!",
     year: '2026',
     tags: ['React', 'TypeScript', 'Canvas API','WebGL'],
-    // live: 'for demo purposes only, link coming soon!',
   },
   {
     id: 3,
@@ -46,21 +45,11 @@ const PROJECTS: Project[] = [
     year: '2026',
     tags: ['React', 'TypeScript', 'CSS'],
   }
-  // Format to add more projects
-  // {
-  //   id: 2,
-  //   title: 'Next Project',
-  //   description: '...',
-  //   year: '2025',
-  //   tags: ['Java', 'Spring Boot'],
-  //   github: 'https://github.com/...',
-  // },
 ]
 
-// General note about the given projects
 const WORK_NOTE = "These are projects I've chosen because they best reflect my current skills as I become a better programmer. Each one pushed me to learn something new and ship something I'm proud of."
 
-// Preview panel
+// Preview panel (external URLs via iframe)
 function PreviewPanel({ url, label }: { url: string; label: string }) {
   const [loaded, setLoaded] = useState(false)
   const [errored, setErrored] = useState(false)
@@ -92,7 +81,31 @@ function PreviewPanel({ url, label }: { url: string; label: string }) {
   )
 }
 
-// Model
+// Internal route preview (navigates within the site)
+function InternalPreview({ route, label }: { route: string; label: string }) {
+  return (
+    <div className="project-preview">
+      <div className="project-preview__bar">
+        <span className="project-preview__label">{label}</span>
+      </div>
+      <div className="project-preview__frame-wrap">
+        <div className="project-preview__internal">
+          <p className="project-preview__internal-text">
+            This project runs right here on this site.
+          </p>
+          <button
+            className="project-preview__internal-btn"
+            onClick={() => navigate(route)}
+          >
+            Try it →
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Modal
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [activeTab, setActiveTab] = useState<'github' | 'live'>(project.github ? 'github' : 'live')
 
@@ -104,6 +117,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   }, [onClose])
 
   const hasBoth = !!project.github && !!project.live
+  const hasInternal = !!project.internalRoute
 
   return (
     <div className="project-modal" role="dialog" aria-modal="true">
@@ -125,18 +139,26 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
         )}
         <div className="project-modal__previews">
-          {!project.github && !project.live && <p className="project-modal__no-links">No links added yet.</p>}
-          {project.github && !hasBoth && <PreviewPanel url={project.github} label="GitHub" />}
-          {project.live && !hasBoth && <PreviewPanel url={project.live} label="Live site" />}
-          {hasBoth && activeTab === 'github' && <PreviewPanel url={project.github!} label="GitHub" />}
-          {hasBoth && activeTab === 'live' && <PreviewPanel url={project.live!} label="Live site" />}
+          {/* Internal route projects */}
+          {hasInternal && (
+            <InternalPreview route={project.internalRoute!} label="Live demo" />
+          )}
+
+          {/* External projects (unchanged logic) */}
+          {!hasInternal && !project.github && !project.live && (
+            <p className="project-modal__no-links">No links added yet.</p>
+          )}
+          {!hasInternal && project.github && !hasBoth && <PreviewPanel url={project.github} label="GitHub" />}
+          {!hasInternal && project.live && !hasBoth && <PreviewPanel url={project.live} label="Live site" />}
+          {!hasInternal && hasBoth && activeTab === 'github' && <PreviewPanel url={project.github!} label="GitHub" />}
+          {!hasInternal && hasBoth && activeTab === 'live' && <PreviewPanel url={project.live!} label="Live site" />}
         </div>
       </div>
     </div>
   )
 }
 
-// Project row 
+// Project row
 function ProjectRow({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) {
   return (
     <div
@@ -166,7 +188,6 @@ export default function ProjectsSection() {
     <section id="projects" className="projects">
       <div className="projects__layout">
 
-        {/* Left: just the list */}
         <div className="projects__left reveal">
           <div className="projects__list">
             {sorted.map((project, i) => (
@@ -174,19 +195,12 @@ export default function ProjectsSection() {
                 key={project.id}
                 project={project}
                 index={i}
-                onClick={() => {
-                  if (project.internalRoute) {
-                    navigate(project.internalRoute)
-                  } else {
-                    setSelected(project)
-                  }
-                }}
+                onClick={() => setSelected(project)}
               />
             ))}
           </div>
         </div>
 
-        {/* Right: heading and note stacked */}
         <div className="projects__heading-wrap reveal reveal-delay-1">
           <div>
             <span className="section-label">Work</span>
