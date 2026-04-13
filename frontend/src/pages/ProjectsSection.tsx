@@ -51,6 +51,7 @@ const PROJECTS: Project[] = [
     description: 'Smart Apply is a full-stack web application that streamlines the job search process using AI. It aggregates listings from major job boards, scores each role against your professional profile, and generates tailored cover letters and resume bullets in seconds while staying within a single, cohesive interface.  The platform connects to your Gmail account to automatically detect recruiter responses and update your application statuses in real time. A profile system stores your experience, skills, and projects, which feeds directly into the AI generation pipeline to produce cover letters that are specific to each job. A job match scorer breaks down exactly which of your skills are covered, partially matched, or missing for any given role.  Uploading a resume PDF triggers a parsing pipeline that auto-fills every profile field using the Anthropic API, so setup takes under two minutes. The platform also tracks your full application history across five statuses labeled as applied, awaiting, interview, offer, and rejected.',
     year: '2026',
     tags: ['TypeScript', 'Flask', 'PostgreSQL'],
+    live: 'https://smart-apply-xi.vercel.app/',
   }
 ]
 
