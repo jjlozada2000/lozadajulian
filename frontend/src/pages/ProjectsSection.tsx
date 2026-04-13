@@ -44,7 +44,7 @@ const PROJECTS: Project[] = [
     description: 'The website you\'re currently on! Built with React and TypeScript, this portfolio was made to showcase my skills and interests. It features a custom-built lightbox for photo viewing, a responsive design for seamless browsing on any device, and an interactive navigation system that highlights different sections as you scroll. The site is designed to be fast, accessible, and visually engaging, reflecting my focus on both technology and design. I learned a lot while building this, and it continues to be a work in progress as I add new projects and features over time. It was deployed using Vercel for the frontend, Render for the backend, PostgreSQL for the database, and Resend for email handling.',
     year: '2026',
     tags: ['React', 'TypeScript', 'CSS'],
-  }
+  },
   {
     id: 5,
     title: 'Smart Apply',
